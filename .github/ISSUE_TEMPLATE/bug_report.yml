@@ -1,0 +1,56 @@
+name:  Bug Report
+description: File a bug report to help us improve the project
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the issue.
+      placeholder: |
+        Describe what you were trying to do and what went wrong.
+        For example: "I was trying to navigate to /dashboard but got redirected to /auth/login unexpectedly."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Provide step-by-step instructions to reproduce the issue.
+      placeholder: |
+        1. Start the dev server (`npm run dev`)
+        2. Navigate to '/'
+        3. Click on 'Get Started'
+        4. Observe the issue
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: "I expected to be redirected to the dashboard after login."
+
+  - type: input
+    attributes:
+      label: Affected route/component
+      description: Specify which route or component is causing the issue.
+      placeholder: "e.g. /auth/register or Navbar.tsx"
+
+  - type: input
+    attributes:
+      label: Environment
+      description: Include system info and relevant packages.
+      placeholder: "Windows 11, Chrome 126, Node 20.9.0, Next.js 14.1.0, TailwindCSS 3.4.1"
+
+  - type: textarea
+    attributes:
+      label: Screenshots / logs
+      description: Paste any console errors, logs, or screenshots that help explain the issue.
+      placeholder: "No error logs were shown in the console..."
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Any other information that might be relevant.
+      placeholder: "This bug only happens when Zustand state is empty and cookies are missing..."

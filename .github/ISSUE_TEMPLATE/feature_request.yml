@@ -1,0 +1,38 @@
+name:  Feature Request
+description: Suggest an idea or improvement for the project
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    attributes:
+      label: What's the idea?
+      description: Describe the feature or improvement you want to propose.
+      placeholder: |
+        Example:
+        "Add a dark mode toggle using Zustand state so user preferences persist across sessions."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Why is it useful?
+      description: Explain why this feature would be helpful for users or developers.
+      placeholder: |
+        Example:
+        "Improves accessibility and user comfort, especially for users in low-light environments."
+
+  - type: textarea
+    attributes:
+      label: Affected areas
+      description: Which routes/components/pages does this feature affect?
+      placeholder: "Navbar.tsx, _app.tsx, Zustand store"
+
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: Add designs, screenshots, links to references, or related issues if any.
+      placeholder: |
+        Example:
+        - Screenshot of the current navbar
+        - Related issue: #42
+        - Design reference: [Figma link or image]
