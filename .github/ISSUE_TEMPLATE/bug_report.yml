@@ -1,4 +1,4 @@
-name:  Bug Report
+name: 🐛 Bug Report
 description: File a bug report to help us improve the project
 title: "[Bug] "
 labels: ["bug"]
@@ -8,8 +8,10 @@ body:
       label: What happened?
       description: A clear and concise description of the issue.
       placeholder: |
-        Describe what you were trying to do and what went wrong.
-        For example: "I was trying to navigate to /dashboard but got redirected to /auth/login unexpectedly."
+        Describe the issue you encountered and what you expected to happen.
+        Example: "When I tried to log in, the app refreshed but didn’t redirect."
+      render: shell
+      rows: 6
     validations:
       required: true
 
@@ -18,39 +20,46 @@ body:
       label: Steps to reproduce
       description: Provide step-by-step instructions to reproduce the issue.
       placeholder: |
-        1. Start the dev server (`npm run dev`)
-        2. Navigate to '/'
-        3. Click on 'Get Started'
-        4. Observe the issue
+        1. Open the app
+        2. Click on a button or link
+        3. Describe what you saw
+        4. Mention what you expected instead
+      render: shell
+      rows: 6
     validations:
       required: true
 
   - type: textarea
     attributes:
       label: Expected behavior
-      description: What did you expect to happen?
-      placeholder: "I expected to be redirected to the dashboard after login."
+      description: What should have happened instead?
+      placeholder: "Example: I expected a success message and a redirect to the dashboard."
+      rows: 3
 
   - type: input
     attributes:
-      label: Affected route/component
-      description: Specify which route or component is causing the issue.
-      placeholder: "e.g. /auth/register or Navbar.tsx"
+      label: Affected route or component
+      description: Mention where the issue occurs (URL or component name).
+      placeholder: "/dashboard or LoginForm.tsx"
 
   - type: input
     attributes:
       label: Environment
-      description: Include system info and relevant packages.
-      placeholder: "Windows 11, Chrome 126, Node 20.9.0, Next.js 14.1.0, TailwindCSS 3.4.1"
+      description: System & tech stack info (optional but helpful).
+      placeholder: "e.g. macOS 14, Chrome 126, Node 20, Vite, TailwindCSS"
 
   - type: textarea
     attributes:
       label: Screenshots / logs
-      description: Paste any console errors, logs, or screenshots that help explain the issue.
-      placeholder: "No error logs were shown in the console..."
+      description: Paste any error logs or add screenshots if applicable.
+      placeholder: "No visible error logs. UI is stuck on loading..."
+      render: shell
+      rows: 5
 
   - type: textarea
     attributes:
       label: Additional context
-      description: Any other information that might be relevant.
-      placeholder: "This bug only happens when Zustand state is empty and cookies are missing..."
+      description: Any other details or edge cases that might be related.
+      placeholder: "This only happens in incognito mode or after clearing localStorage..."
+      render: shell
+      rows: 4
