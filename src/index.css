@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901,1,2&display=swap");
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #0d0c0c;
+    --color-secondary: #292929;
+    --color-accent: #EE441C;
+
+    --font-geist-sans: 'Geist', sans-serif;
+    --font-geist-mono: 'Geist Mono', monospace;
+    --font-jetbrains-mono: 'JetBrains Mono', monospace;
+    --font-outfit: 'Outfit', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-satoshi: 'Satoshi', sans-serif;
+}
+
+@layer base {
+    body {
+        background-color: var(--color-primary);
+        font-family: 'Inter', sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        position: relative;
+    }
+}
+
+.user-profile {
+    grid-column: 3;
+    justify-self: end;
+}
+
+.user-profile img {
+    height: 120px;
+    width: 120px;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(1.1) saturate(1.5) hue-rotate(15deg);
+    -webkit-filter: brightness(1.1) saturate(1.5) hue-rotate(15deg);
+    border: 2px solid rgba(238, 68, 28, 0.3);
+}
+
+.profile-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 5vw;
+    margin-top: 7.5vh;
+}
+
+.profile-hero h1 {
+    margin: 0;
+    font-size: 15vw;
+    font-weight: 300;
+    background: linear-gradient(91deg, #FF6B4A 22.18%, #EE441C 99.55%);
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 107, 74, 0.5);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -250% 0;
+    }
+
+    100% {
+        background-position: 250% 0;
+    }
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) #000;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #000;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(91deg, #EE441C 22.18%, #CB3A18 99.55%);
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(91deg, #FF6B4A 22.18%, #EE441C 99.55%);
+}
+
+
+.cardbase {
+    font-family: 'Satoshi', sans-serif;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    display: block;
+    height: 410px;
+    max-width: 310px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(34, 34, 34));
+}
+
+.cardbase:hover {
+    transform: scale(1.08);
+}
+
+.cardbase::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(80deg,
+            transparent 30%,
+            rgba(255, 100, 0, 0.3) 50%,
+            transparent 60%);
+    transform: rotate(0deg);
+    animation: shineMove 4s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cardbase * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes shineMove {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
