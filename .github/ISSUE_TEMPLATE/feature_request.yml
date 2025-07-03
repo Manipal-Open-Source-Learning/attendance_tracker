@@ -1,38 +1,44 @@
-name:  Feature Request
-description: Suggest an idea or improvement for the project
+name: 🚀 Feature Request
+description: Suggest a new feature or improvement
 title: "[Feature] "
 labels: ["enhancement"]
 body:
   - type: textarea
     attributes:
-      label: What's the idea?
-      description: Describe the feature or improvement you want to propose.
+      label: Feature Description
+      description: What do you want to add or improve?
       placeholder: |
-        Example:
-        "Add a dark mode toggle using Zustand state so user preferences persist across sessions."
+        Clearly describe the feature or enhancement you'd like to see implemented.
+        For example: Add a search bar to the homepage to quickly find user data.
+      render: shell
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Why is it useful?
-      description: Explain why this feature would be helpful for users or developers.
+      label: Use Case
+      description: Why would this feature be helpful?
       placeholder: |
-        Example:
-        "Improves accessibility and user comfort, especially for users in low-light environments."
+        Describe the problem it solves or the value it brings to users or developers.
+        For example: Helps users navigate large datasets more efficiently.
+      render: shell
 
   - type: textarea
     attributes:
-      label: Affected areas
-      description: Which routes/components/pages does this feature affect?
-      placeholder: "Navbar.tsx, _app.tsx, Zustand store"
+      label: Affected Areas
+      description: Which files, routes, components, or features does this change impact?
+      placeholder: |
+        List relevant areas like: DashboardPage.tsx, SearchBar.jsx, or API endpoints.
+      render: shell
 
   - type: textarea
     attributes:
-      label: Anything else?
-      description: Add designs, screenshots, links to references, or related issues if any.
+      label: Additional Context
+      description: Add links, mockups, screenshots, or related issues.
       placeholder: |
-        Example:
-        - Screenshot of the current navbar
-        - Related issue: #42
-        - Design reference: [Figma link or image]
+        Include anything that helps explain your request better.
+        For example:
+        - Screenshot of current layout
+        - Related issues: #123
+        - External inspiration: [link]
+      render: shell
