@@ -1,46 +1,12 @@
-##  Description
+**Please describe the changes this PR makes and why it should be merged:**
 
-Please provide a short summary of what this PR does.  
-Mention any context or background that reviewers should know.
+**Status and versioning classification:**
 
-> Example: Refactored this to support that.
-
----
-
-##  Checklist
-
-- [ ] My changes follow the project’s coding style
-- [ ] I’ve tested the changes locally
-- [ ] I’ve added relevant documentation/comments (if needed)
-- [ ] I’ve linked any related issue(s) below
-
----
-
-##  Related Issues
-
-Closes #<issue_number>  
-Related to #<issue_number>
-
----
-
-##  Type of Change
-
-<!-- Select one or more by marking with "x" -->
-- [ ] Bug fix 
-- [ ] New feature 
-- [ ] Refactor 
-- [ ] Documentation 
-- [ ] CI/CD 
-- [ ] Other (describe):
-
----
-
-## Screenshots (if UI changes)
-
-<!-- Drag & drop UI screenshots or paste here -->
-
----
-
-##  Additional Context
-
-Anything else reviewers should be aware of?
+<!--
+Please move lines that apply to you out of the comment:
+- Code changes have been tested locally, or there are no code changes
+- I know how to update typings and have done so, or typings don't need updating
+- This PR changes the projects's interface (inbuilt methods or parameters added)
+- This PR includes breaking changes (methods removed or renamed, parameters moved or removed)
+- This PR **only** includes non-code changes, like changes to documentation, README, etc.
+-->
