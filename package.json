@@ -20,7 +20,8 @@
     "react-router-dom": "^7.6.3",
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

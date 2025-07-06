@@ -16,10 +16,7 @@ const MainLayout = () => {
         />
       </div>
 
-      <main>
-        <Outlet />
-      </main>
-      
+      <Outlet />
       <BottomBlur />
     </div>
   );

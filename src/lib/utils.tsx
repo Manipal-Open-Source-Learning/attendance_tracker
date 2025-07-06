@@ -11,10 +11,6 @@ import ph from '@/assets/team/ph.png';
 import bac from '@/assets/team/bac.webp';
 import ad from '@/assets/team/ad.png';
 
-const cn = (...inputs: ClassValue[]): string => {
-    return twMerge(clsx(inputs));
-};
-
 const NAVBAR_ITEMS: NavbarItem[] = [
     { label: "Home", route: "/", icon: <HouseIcon className="h-5 w-5" /> },
     { label: "Track Attendance", route: "/tracker", icon: <CalendarSearchIcon className="h-5 w-5" /> },
@@ -30,6 +26,10 @@ const TEAM_MEMBERS: TeamMember[] = [
     { image: bac, name: "bang-a-cat", role: "Gang Member", githubLink: "https://github.com/bongacat" },
     { image: ad, name: "Orca", role: "Gang Member", githubLink: "https://github.com/ObnoxiousOrca" }
 ];
+
+const cn = (...inputs: ClassValue[]): string => {
+    return twMerge(clsx(inputs));
+};
 
 type NavbarItem = {
     label: string;
