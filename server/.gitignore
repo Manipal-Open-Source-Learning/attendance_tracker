@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+package-lock.json*
+
+# Environment variables (for dotenv)
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Optional npm cache directory
+.npm
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
