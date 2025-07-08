@@ -55,7 +55,7 @@ const EmailRegistration = () => {
             setLoading(true);
 
             const cleanedEmailUsername = emailUsername.trim().split('@')[0];
-            const cleanedUsername = cleanedEmailUsername.replace(/\..*$/, '');
+            const cleanedUsername = cleanedEmailUsername.replace(/\d*\..*$/, '');
             const fullEmail = `${cleanedEmailUsername}@learner.manipal.edu`;
 
             setEmailUsername(cleanedEmailUsername);
