@@ -1,5 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import { createHead, UnheadProvider } from '@unhead/react/client';
+import { Toaster } from 'sonner';
 
 import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
@@ -32,6 +33,7 @@ const App = () => {
 
   return (
     <UnheadProvider head={head}>
+      <Toaster expand={true} position='top-right' theme='dark' />
       <RouterProvider router={router} />
     </UnheadProvider>
   )
