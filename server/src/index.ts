@@ -1,9 +1,17 @@
+import dotenv from 'dotenv';
+import path from 'path';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({
+    path: path.resolve(
+        process.cwd(),
+        process.env.NODE_ENV === 'production'
+            ? '.env.production'
+            : '.env.development'
+    ),
+});
 
 const app = express();
 const PORT = process.env.PORT || 5000;
