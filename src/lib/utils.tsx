@@ -27,6 +27,10 @@ const TEAM_MEMBERS: TeamMember[] = [
     { image: ad, name: "Orca", role: "Gang Member", githubLink: "https://github.com/ObnoxiousOrca" }
 ];
 
+const RESPONSE_MESSAGE = {
+    otpSuccess: 'OTP sent successfully!'
+}
+
 const cn = (...inputs: ClassValue[]): string => {
     return twMerge(clsx(inputs));
 };
@@ -44,4 +48,4 @@ type TeamMember = {
     githubLink: string;
 };
 
-export { NAVBAR_ITEMS, TEAM_MEMBERS, cn };
+export { NAVBAR_ITEMS, TEAM_MEMBERS, RESPONSE_MESSAGE, cn };
