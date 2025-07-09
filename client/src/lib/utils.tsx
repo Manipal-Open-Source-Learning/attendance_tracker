@@ -28,7 +28,24 @@ const TEAM_MEMBERS: TeamMember[] = [
 ];
 
 const RESPONSE_MESSAGE = {
-    otpSuccess: 'OTP sent successfully!'
+    otpSuccess: {
+        sent: 'OTP sent successfully!',
+        validated: 'OTP validated successfully!'
+    },
+    otpErrors: {
+        invalid: 'Incorrect OTP. Please check and retry.',
+        expired: 'OTP expired. Request a new one.',
+        maxAttempts: 'Too many attempts. Wait 2 minutes.',
+        serverError: 'OTP service unavailable. Contact support.'
+    },
+    loginSuccess: {
+        registered: 'Account created successfully!',
+        onboarded: 'You\'re all set! Welcome aboard.'
+    },
+    loginErrors: {
+        expired: 'The request timed out. Please check your connection and try again.',
+        serverError: 'We encountered a server error while processing your request. Please refresh the page and try again.',
+    }
 }
 
 const cn = (...inputs: ClassValue[]): string => {

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import useUIStore from "@/stores/useUIStore";
 import useAuthStore from "@/stores/useAuthStore";
 import { cn, RESPONSE_MESSAGE } from "@/lib/utils";
-import ShowToast from "@/components/ui/ShowToast";
 
 const EmailRegistration = () => {
     const [dots, setDots] = useState('');
@@ -11,6 +10,8 @@ const EmailRegistration = () => {
 
     const loading = useUIStore((state) => state.loading);
     const setLoading = useUIStore((state) => state.setLoading);
+    const setSuccess = useUIStore((state) => state.setSuccess);
+    const setError = useUIStore((state) => state.setError);
 
     const emailUsername = useAuthStore((state) => state.emailUsername);
     const setEmailUsername = useAuthStore((state) => state.setEmailUsername);
@@ -62,27 +63,23 @@ const EmailRegistration = () => {
             setEmail(fullEmail);
 
             // Perform login logic here (e.g. API call)
-            await new Promise((resolve) => setTimeout(resolve, 5000));
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            // await Promise.reject(new Error('failed'))
 
-            console.log("Verifying with: ", fullEmail);
+            console.log("Verifying with Email: ", fullEmail);
             console.log("Cleaned Username: ", cleanedUsername);
 
-            ShowToast({
-                type: 'success',
-                children: (
-                    <span className="text-white font-satoshi font-medium text-sm">
-                        {RESPONSE_MESSAGE.otpSuccess}
-                    </span>
-                )
-            });
-
+            setSuccess(RESPONSE_MESSAGE.otpSuccess.sent);
             setStep('otp');
         } catch (error) {
-            console.error("Verification failed:", error);
+            console.error("Verification failed: ", error);
+
+            // check error type - api failure, rate-limited, otp-expired (duration: Infinity) etc
+            setError(RESPONSE_MESSAGE.otpErrors.serverError);
         } finally {
             setLoading(false);
         }
-    }, [loading, emailUsername, setLoading, setEmailUsername, setEmail, setStep]);
+    }, [loading, emailUsername, setLoading, setEmailUsername, setEmail, setStep, setSuccess, setError]);
 
     const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setEmailUsername(e.target.value.toLowerCase());
@@ -96,22 +93,13 @@ const EmailRegistration = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen font-outfit -translate-y-13">
-            <Link
-                to="/"
-                className="mb-4"
-            >
-                <img src="/logo.png" className="h-10" />
-            </Link>
-            <label
-                htmlFor="email"
-                className="my-5 text-xl font-medium text-white"
-            >
+        <>
+            <h1 className="my-5 text-xl font-medium text-white">
                 What's your Outlook email address?
-            </label>
+            </h1>
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col items-center gap-0.5"
+                className="flex flex-col items-center gap-y-0.5"
                 noValidate={false}
             >
                 <div className="flex items-center">
@@ -135,9 +123,9 @@ const EmailRegistration = () => {
                             emailUsername ? 'text-center' : 'text-left'
                         )}
                     />
-                    <span className="pl-2 text-white/50 text-sm">
+                    <p className="pl-2 text-white/50 text-sm">
                         @learner.manipal.edu
-                    </span>
+                    </p>
                 </div>
                 <button
                     type="submit"
@@ -158,7 +146,7 @@ const EmailRegistration = () => {
                     Log In
                 </Link>
             </div>
-        </div>
+        </>
     );
 }
 
