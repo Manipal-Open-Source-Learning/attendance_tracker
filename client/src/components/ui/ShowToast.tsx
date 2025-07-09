@@ -33,12 +33,14 @@ const CustomToast = ({ t, type, duration, children }: CustomToastProps) => {
   const startTimestamp = useRef<number>(Date.now());
 
   const startTimer = useCallback(() => {
+    if (duration === Infinity) return;
+
     startTimestamp.current = Date.now();
     timerRef.current = setTimeout(() => {
       setIsVisible(false);
       setTimeout(() => toast.dismiss(t), 300);
     }, remainingTime.current);
-  }, [t]);
+  }, [t, duration]);
 
   const pauseTimer = useCallback(() => {
     if (timerRef.current) {
