@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuthStore from "@/stores/useAuthStore";
 import useUIStore from "@/stores/useUIStore";
 import { cn, RESPONSE_MESSAGE } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
 
 const DetailsCollection = () => {
     const navigate = useNavigate();
@@ -49,6 +49,12 @@ const DetailsCollection = () => {
         return () => window.removeEventListener("keydown", handleKeydown);
     }, [loading]);
 
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, []);
+
     const handleSubmit = useCallback(async (e: React.FormEvent) => {
         e.preventDefault();
         if (loading || !username || !password) return;
@@ -67,10 +73,7 @@ const DetailsCollection = () => {
             navigate('/'); // /onboarding route whenever we're done with that
 
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
-            timeoutRef.current = setTimeout(() => {
-                resetAuth();
-            }, 2000);
+            timeoutRef.current = setTimeout(() => resetAuth(), 2000);
         } catch (error) {
             console.error("Verification failed: ", error);
 
@@ -82,14 +85,15 @@ const DetailsCollection = () => {
     }, [loading, username, password, navigate, setLoading, setSuccess, setError, resetAuth]);
 
     const handleInputChange = useCallback((type: 'username' | 'password') => (e: React.ChangeEvent<HTMLInputElement>) => {
-        const setter = type === 'username' ? setUsername : setPassword;
+        const value = e.target.value;
 
-        setter(e.target.value.trim());
+        if (type === 'username') setUsername(value);
+        else setPassword(value);
     }, [setUsername, setPassword]);
 
     return (
         <>
-            <h1 className="flex items-center my-5 text-xl font-medium text-white gap-x-2.5">
+            <h1 className="flex items-center my-3 text-xl font-medium text-white gap-x-2.5">
                 <span>Let's</span>
                 <span>Get</span>
                 <span>Started</span>
@@ -102,8 +106,7 @@ const DetailsCollection = () => {
 
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col items-center gap-y-0.5"
-                noValidate={false}
+                className="flex flex-col items-center gap-y-px"
             >
                 <div className="flex flex-row items-center mt-4 mb-2 gap-x-4">
                     <input
@@ -150,11 +153,13 @@ const DetailsCollection = () => {
                     type="submit"
                     disabled={loading || !username || !password}
                     className={cn(
-                        "bg-secondary/20 text-accent/60 hover:text-accent font-satoshi text-xl p-2 mt-4 rounded-xl cursor-pointer transition-all duration-300 ease-in",
+                        "bg-secondary/20 text-accent/60 hover:text-accent font-satoshi font-semibold text-xl p-2 mt-4 rounded-xl cursor-pointer transition-all duration-300 ease-in",
                         loading ? 'text-accent' : 'w-65',
                     )}
                 >
-                    {loading ? `Creating Your Account${dots}` : 'Get Started'}
+                    <span className="inline-block hover:scale-101 transition-transform duration-300 ease-in">
+                        {loading ? `Creating Your Account${dots}` : 'Get Started'}
+                    </span>
                 </button>
             </form>
         </>

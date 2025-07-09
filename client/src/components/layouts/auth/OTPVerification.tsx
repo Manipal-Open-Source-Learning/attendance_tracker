@@ -61,7 +61,7 @@ const OTPVerification = () => {
         }
     }, [loading, otp, setLoading, setOtp, setStep, setSuccess, setError]);
 
-    const handleOtpResend = useCallback(async (e: React.MouseEvent<HTMLSpanElement>) => {
+    const handleOtpResend = useCallback(async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if (loading) return;
 
@@ -139,7 +139,7 @@ const OTPVerification = () => {
                         <button
                             type='submit'
                             disabled={loading}
-                            className='pl-3 cursor-pointer'
+                            className='pl-3 cursor-pointer active:scale-95 transition-all duration-200 ease-in'
                             aria-label="Submit OTP"
                         >
                             <CircleArrowRightIcon className='text-accent h-8 w-8 pointer-events-none' />
