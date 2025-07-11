@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 type BlurLayer = {
     zIndex: number;
     blur: number;
@@ -6,6 +8,11 @@ type BlurLayer = {
     mid2: number;
     end: number;
 };
+
+type BottomBlurProps = {
+    fixed?: boolean;
+    intensity?: number;
+}
 
 const layers: BlurLayer[] = [
     { zIndex: 1, blur: 0.0546875, start: 0, mid1: 12.5, mid2: 25, end: 37.5 },
@@ -26,9 +33,12 @@ const layers: BlurLayer[] = [
     { zIndex: 16, blur: 7, start: 93.75, mid1: 100, mid2: 100, end: 100 }, // copy of last for symmetry
 ];
 
-const BottomBlur = () => {
+const BottomBlur = ({ fixed = true, intensity = 1 }: BottomBlurProps) => {
     return (
-        <div className="fixed left-0 right-0 bottom-0 h-20 flex-none pointer-events-none z-10">
+        <div className={cn(
+            "left-0 right-0 bottom-0 h-20 flex-none pointer-events-none z-10",
+            fixed ? 'fixed' : 'block'
+    )}>
             <div className="absolute inset-0 overflow-hidden">
                 {layers.map(({ zIndex, blur, start, mid1, mid2, end }) => (
                     <div
@@ -40,8 +50,8 @@ const BottomBlur = () => {
                             zIndex,
                             borderRadius: 0,
                             pointerEvents: 'none',
-                            backdropFilter: `blur(${blur}px)`,
-                            WebkitBackdropFilter: `blur(${blur}px)`,
+                            backdropFilter: `blur(${blur * intensity}px)`,
+                            WebkitBackdropFilter: `blur(${blur * intensity}px)`,
                             willChange: 'auto',
                             maskImage: `linear-gradient(
             rgba(0, 0, 0, 0) ${start}%,
