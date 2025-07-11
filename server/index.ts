@@ -26,6 +26,32 @@ app.get('/', (req, res) => {
   res.status(200).send("API is Up");
 });
 
+
+app.post('/signUp', (req, res) => {
+    (async () => {
+    try {
+        const {
+            userEmail
+        } = req.body
+
+    const db = client.db(DB_NAME);
+    const collection = db.collection("userData");
+
+    const time = new Date().toISOString()
+
+    await collection.insertOne({
+        "userEmail": userEmail,
+        "signUpTime": time
+    });
+
+    res.status(200).send("Success");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ error: "Error generating response" });
+  }
+    })();
+});
+
 app.post('/onboard', (req, res) => {
     (async () => {
     try {
