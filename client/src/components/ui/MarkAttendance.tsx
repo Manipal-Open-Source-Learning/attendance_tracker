@@ -1,7 +1,7 @@
 import data from "./test.json"
-import { MONTHS } from "@/lib/utils";
-import { DAYS } from "@/lib/utils";
-import calendar from '@/assets/icons/calendar.svg';
+import { MONTHS } from "../../lib/utils";
+import { DAYS } from "../../lib/utils";
+import calendar from '../../assets/icons/calendar.svg';
 
 type MarkProps = {
     activeDate: Date,

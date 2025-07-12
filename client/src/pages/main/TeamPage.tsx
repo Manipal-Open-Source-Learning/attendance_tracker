@@ -1,6 +1,6 @@
-import useAppSeo from '@/lib/hooks/useAppSeo';
-import TeamMember from '@/components/ui/ProfileCard';
-import { TEAM_MEMBERS } from '@/lib/utils';
+import useAppSeo from '../../lib/hooks/useAppSeo';
+import TeamMember from '../../components/ui/ProfileCard';
+import { TEAM_MEMBERS } from '../../lib/utils';
 
 const Team = () => {
     useAppSeo({
