@@ -119,7 +119,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
                 <div className='flex-1 flex'>
                     <FadeIn className="font-geist-mono tracking-wider backdrop-blur-md rounded-[14px]">
-                        <Link to="/" className="flex items-center gap-x-4 bg-secondary/45 rounded-[14px] py-2 px-4 backdrop-blur-md">
+                        <Link to="/" className="flex items-center gap-x-4 bg-secondary/45 rounded-[14px] py-2 px-4">
                             <img src={logo} alt="OSL Logo" className="h-10" />
                             <div className="text-accent font-medium text-xl">Manipal OSF</div>
                         </Link>
