@@ -107,20 +107,7 @@
 
 
 .cardbase {
-    font-family: 'Satoshi', sans-serif;
-    transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    display: block;
-    height: 410px;
-    max-width: 310px;
-    border-radius: 15px;
-    background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(34, 34, 34));
-}
-
-.cardbase:hover {
-    transform: scale(1.08);
+  @apply relative h-130 w-80 rounded-[46px] m-5 overflow-hidden bg-gradient-to-b from-neutral-800 to-primary shadow-xl border border-neutral-800 transition-transform hover:scale-108 duration-300 ease-in-out;
 }
 
 .cardbase::before {
@@ -138,11 +125,6 @@
     animation: shineMove 4s linear infinite;
     pointer-events: none;
     z-index: 0;
-}
-
-.cardbase * {
-    position: relative;
-    z-index: 1;
 }
 
 @keyframes shineMove {
