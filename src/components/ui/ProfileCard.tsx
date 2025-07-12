@@ -1,5 +1,5 @@
 import '@/index.css';
-import githubLogo from '@/assets/logo/logo.png';
+import githubLogo from '@/assets/logo/github.png';
 
 type CardProps = {
     image: string;

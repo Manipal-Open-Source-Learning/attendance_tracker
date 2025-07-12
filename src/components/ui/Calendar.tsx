@@ -1,8 +1,4 @@
-import useDateStore from "@/stores/useDateStore";
-
-const Days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-const Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const extraDays = [3,2,3,2,3,2,3];
+import { DAYS, MONTHS, NO_OF_DAYS } from "@/lib/utils";
 const TODAY = new Date();
 
 function checkLeap(n: number){
@@ -13,54 +9,61 @@ function checkLeap(n: number){
     return 0;
 }
 
-function isToday(activeDate: Date, date: number){
-    if(date==TODAY.getDate() && activeDate.getMonth()==TODAY.getMonth() && activeDate.getFullYear()==TODAY.getFullYear()){
+function isSameDate(date1: Date, date2: Date){
+    if(date1.getDate() == date2.getDate() && date1.getMonth()==date2.getMonth() && date1.getFullYear()==date2.getFullYear()){
         return true;
     }
     return false;
 }
 
-const Calendar = ()=>{
-    const {activeDate, nextMonth, prevMonth, setDate} = useDateStore();
+type CalendarProps = {
+    firstOfTheMonth: Date,
+    activeDate: Date,
+    nextMonth: Function,
+    prevMonth: Function,
+    setDate: Function
+}
+
+const Calendar = ({activeDate, firstOfTheMonth, nextMonth, prevMonth, setDate}:CalendarProps)=>{
+    const shownMonth = firstOfTheMonth.getMonth();
+    const shownYear = firstOfTheMonth.getFullYear();
     return (
         <>
-            <div className="max-w-120">
+            <div className="max-w-120 m-3">
 
                 <div className="flex justify-between bg-amber-600 w-350px p-1 items-center rounded-t-xl">
                     <button id="previous" className="cursor-pointer bg-[#ffb380] text-2xl text-white h-7 w-7 flex justify-center items-center rounded-lg"
-                        onClick={prevMonth}>‹</button>
-                    <span>{Months[activeDate.getMonth()]}, {activeDate.getFullYear()}</span>
+                        onClick={()=>{prevMonth()}}>‹</button>
+                    <p className="font-satoshi font-semibold">{MONTHS[shownMonth]}, {shownYear}</p>
                     <button id="next" className="cursor-pointer bg-[#ffb380] text-2xl text-white h-7 w-7 flex justify-center items-center rounded-lg"
-                        onClick={nextMonth}>›</button>
+                        onClick={()=>{(TODAY.getMonth()==shownMonth)?{}:nextMonth()}}>›</button>
                 </div>
 
 
                 <div className="flex justify-between bg-[#c4c4c4] pl-1 pr-1">
-                    {Days.map((e)=>(
-                        <p className="w-[calc(100%/7)] text-center">{e}</p>
+                    {DAYS.map((e)=>(
+                        <p className="w-[calc(100%/7)] text-center font-outfit font-semibold">{e.substring(0,3)}</p>
                     ))}
                 </div>
 
 
-                <div id="dates" className="flex flex-wrap bg-[#ffb380] p-1 pb-2 rounded-b-xl">
-                    {[...Array((new Date(activeDate.getFullYear(), activeDate.getMonth(),1)).getDay())].map(()=>(
+                <div id="dates" className="flex flex-wrap bg-[rgb(0 0 0/0.3)] p-1 pb-2 rounded-b-xl border-4 border-amber-600 backdrop-blur-xs h-95 items-center">
+                    {[...Array(firstOfTheMonth.getDay())].map(()=>(
                             <p className="h-10 w-[calc(100%/7)] border-0"></p>)
                         )
                     }
-                    {[...Array(28+((activeDate.getMonth()==1)?checkLeap(activeDate.getFullYear()):extraDays[activeDate.getMonth()%7])).keys()].map((e)=>(
-                            <button className="h-15 w-[calc(100%/7)] border-0 cursor-pointer flex justify-center items-center"
-                                onClick={()=>setDate(new Date(activeDate.getFullYear(), activeDate.getMonth(), e+1))}>
-                                <p className={`w-8 h-8 rounded-full flex justify-center items-center border-amber-600 ${isToday(activeDate, e+1)?"bg-green-500":""} border-${(activeDate.getDate()==e+1)?"3":"0"}`}>
+                    {[...Array(NO_OF_DAYS[shownMonth]+(shownMonth==1 && checkLeap(shownYear)?1:0)).keys()].map((e)=>{ 
+                        const d = new Date(shownYear, shownMonth, e+1);
+                        return(
+                            <button className="h-15 w-[calc(100%/7)] border-0 cursor-pointer flex justify-center items-center m-0"
+                                onClick={()=>setDate(d)}>
+                                <p className={`w-8 h-8 rounded-full flex justify-center text-[#ffffff] font-satoshi font-bold items-center border-amber-600 ${isSameDate(d, TODAY)?"bg-green-500":""} ${isSameDate(d, activeDate)?"border-3":"border-0"}`}>
                                     {e+1}
                                 </p>
                             </button>)
-                        )
+                        })
                     }
                 </div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
             </div>
         </>
     )
