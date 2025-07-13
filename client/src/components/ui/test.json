@@ -3,6 +3,7 @@
   "program": "B.Tech I Semester",
   "semester": "First Semester: S Section",
   "effective_from": "19th August 2024",
+  "subjects" : ["MAT","BET","BIO","CHEM","CHEM LAB","PSUC","PSUC LAB","EVS","EG LAB","HRC"],
   "weekly_schedule": {
     "1": [
       "MAT",

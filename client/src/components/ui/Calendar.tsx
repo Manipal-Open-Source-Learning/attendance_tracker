@@ -27,6 +27,11 @@ type CalendarProps = {
 const Calendar = ({activeDate, firstOfTheMonth, nextMonth, prevMonth, setDate}:CalendarProps)=>{
     const shownMonth = firstOfTheMonth.getMonth();
     const shownYear = firstOfTheMonth.getFullYear();
+    const highlightToday = (d:Date) => isSameDate(d, TODAY)?"bg-green-500":"bg-none";
+    const highlightActive = (d:Date) => isSameDate(d, activeDate)?"border-3":"border-0";
+    const dateColor = (d:Date) => d>TODAY?"text-[#888888]":"text-white";
+    // i know what you are thinking but THE CLSX WAS NOT FUCKING WORKING NO MATTER WHAT BRO
+    
     return (
         <>
             <div className="max-w-120 m-3">
@@ -34,7 +39,7 @@ const Calendar = ({activeDate, firstOfTheMonth, nextMonth, prevMonth, setDate}:C
                 <div className="flex justify-between bg-amber-600 w-350px p-1 items-center rounded-t-xl">
                     <button id="previous" className="cursor-pointer bg-[#ffb380] text-2xl text-white h-7 w-7 flex justify-center items-center rounded-lg"
                         onClick={()=>{prevMonth()}}>‹</button>
-                    <p className="font-satoshi font-semibold">{MONTHS[shownMonth]}, {shownYear}</p>
+                    <p className="font-quicksand font-bold">{MONTHS[shownMonth]}, {shownYear}</p>
                     <button id="next" className="cursor-pointer bg-[#ffb380] text-2xl text-white h-7 w-7 flex justify-center items-center rounded-lg"
                         onClick={()=>{(TODAY.getMonth()==shownMonth)?{}:nextMonth()}}>›</button>
                 </div>
@@ -56,8 +61,8 @@ const Calendar = ({activeDate, firstOfTheMonth, nextMonth, prevMonth, setDate}:C
                         const d = new Date(shownYear, shownMonth, e+1);
                         return(
                             <button className="h-15 w-[calc(100%/7)] border-0 cursor-pointer flex justify-center items-center m-0"
-                                onClick={()=>setDate(d)}>
-                                <p className={`w-8 h-8 rounded-full flex justify-center text-[#ffffff] font-satoshi font-bold items-center border-amber-600 ${isSameDate(d, TODAY)?"bg-green-500":""} ${isSameDate(d, activeDate)?"border-3":"border-0"}`}>
+                                onClick={()=>{(d<TODAY)?setDate(d):{}}}>
+                                <p className={`w-8 h-8 rounded-full flex justify-center ${dateColor(d)} font-satoshi font-bold items-center border-amber-600 ${highlightToday(d)} ${highlightActive(d)}`}>
                                     {e+1}
                                 </p>
                             </button>)

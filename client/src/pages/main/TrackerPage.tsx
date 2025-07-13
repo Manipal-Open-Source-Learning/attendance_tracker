@@ -26,7 +26,7 @@ const Tracker = () => {
                 </div>
                 <div className={`text-center ${visibility2}`}>
                     <Calendar activeDate={activeDate} firstOfTheMonth={firstOfTheMonth} nextMonth={nextMonth} prevMonth={prevMonth} setDate={setDate}/>
-                    <button className="bg-[#00c12d] cursor-pointer p-2 rounded-lg font-satoshi font-semibold" onClick={switcheroo}>Done</button>
+                    <button className="bg-[#00c12d] cursor-pointer p-2 rounded-lg font-satoshi font-semibold" onClick={switcheroo}>Done</button> {/*TO BE MADE ASYNC ONCE CONNECTED TO DB*/}
                 </div>
             </div>
             <br/>

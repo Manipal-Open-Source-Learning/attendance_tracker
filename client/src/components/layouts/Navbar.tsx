@@ -49,7 +49,7 @@ const NavItem = ({ route, label, icon, isActive, index }: NavItemProps) => (
         <Link
             to={route}
             className={clsx(
-                'flex items-center gap-x-1.5 text-sm font-outfit tracking-wider uppercase',
+                'flex items-center gap-x-1.5 text-sm font-outfit tracking-wider uppercase transition-all duration-300 ease-in-out',
                 isActive ? 'text-white' : 'text-white/60 hover:text-white'
             )}
         >
@@ -85,7 +85,7 @@ const AuthSection = ({ user }: { user: boolean }) => {
         <div className='hidden md:flex items-center h-10 bg-secondary/45 backdrop-blur-md rounded-[14px] text-white/80'>
             <Link
                 to="/auth/login"
-                className="px-3 h-full flex items-center text-sm font-jetbrains-mono hover:drop-shadow-[0_0_7px_rgba(255,255,255,0.5)] transition-all duration-300"
+                className="px-3 h-full flex items-center text-sm font-jetbrains-mono hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] transition-all duration-300 ease-in-out"
             >
                 <FadeIn>
                     Log In
@@ -93,7 +93,7 @@ const AuthSection = ({ user }: { user: boolean }) => {
             </Link>
 
             <div className="flex items-center group">
-                <div className="h-5 w-px bg-white/10 origin-center transform transition-all duration-300 ease-in-out group-hover:h-0 group-hover:opacity-0" />
+                <div className="h-5 w-[1.5px] bg-white/10 origin-center transform transition-all duration-300 ease-in-out group-hover:h-0 group-hover:opacity-0" />
 
                 <FadeIn className="h-10">
                     <Link
@@ -119,7 +119,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
                 <div className='flex-1 flex'>
                     <FadeIn className="font-geist-mono tracking-wider backdrop-blur-md rounded-[14px]">
-                        <Link to="/" className="flex items-center gap-x-4 bg-secondary/45 rounded-[14px] py-2 px-4 backdrop-blur-md">
+                        <Link to="/" className="flex items-center gap-x-4 bg-secondary/45 rounded-[14px] py-2 px-4">
                             <img src={logo} alt="OSL Logo" className="h-10" />
                             <div className="text-accent font-medium text-xl">Manipal OSF</div>
                         </Link>

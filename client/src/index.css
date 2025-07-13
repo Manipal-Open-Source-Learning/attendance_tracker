@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901,1,2&display=swap");
 @import "tailwindcss";
 
@@ -17,6 +18,7 @@
     --font-outfit: 'Outfit', sans-serif;
     --font-inter: 'Inter', sans-serif;
     --font-satoshi: 'Satoshi', sans-serif;
+    --font-quicksand: 'Quicksand', sans-serif;
 }
 
 @layer base {
@@ -107,20 +109,7 @@
 
 
 .cardbase {
-    font-family: 'Satoshi', sans-serif;
-    transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    display: block;
-    height: 410px;
-    max-width: 310px;
-    border-radius: 15px;
-    background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(34, 34, 34));
-}
-
-.cardbase:hover {
-    transform: scale(1.08);
+  @apply relative h-130 w-80 rounded-[46px] m-5 overflow-hidden bg-gradient-to-b from-neutral-800 to-primary shadow-xl border border-neutral-800 transition-transform hover:scale-108 duration-300 ease-in-out;
 }
 
 .cardbase::before {
@@ -140,11 +129,6 @@
     z-index: 0;
 }
 
-.cardbase * {
-    position: relative;
-    z-index: 1;
-}
-
 @keyframes shineMove {
     0% {
         transform: translateX(-100%) translateY(-100%) rotate(45deg);
@@ -153,4 +137,16 @@
     100% {
         transform: translateX(100%) translateY(100%) rotate(45deg);
     }
+}
+
+.cancelButton{
+    @apply bg-[#1f1f1f] text-red-600 rounded-sm border-none text-[10px] p-1 m-2 font-jetbrains-mono cursor-pointer z-0
+}
+
+.substituteButton{
+    @apply bg-[#1f1f1f] text-white rounded-sm border-none text-[10px] p-1 mr-2 font-jetbrains-mono font-extralight
+}
+
+.dropdown:hover .dropdownItems{
+    display:block;
 }
