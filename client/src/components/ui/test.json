@@ -1,0 +1,42 @@
+{
+  "institution": "Manipal Institute of Technology, Bengaluru",
+  "program": "B.Tech I Semester",
+  "semester": "First Semester: S Section",
+  "effective_from": "19th August 2024",
+  "subjects" : ["MAT","BET","BIO","CHEM","CHEM LAB","PSUC","PSUC LAB","EVS","EG LAB","HRC"],
+  "weekly_schedule": {
+    "1": [
+      "MAT",
+      "BET", 
+      "BIO",
+      "CHEM"
+    ],
+    "2": [
+      "CHEM LAB",
+      "PSUC",
+      "EVS",
+      "HRC",
+      "MAT"
+    ],
+    "3": [
+      "CHEM",
+      "BIO",
+      "MAT",
+      "PSUC",
+      "PSUC LAB"
+    ],
+    "4": [
+      "EG LAB",
+      "EVS",
+      "BIO",
+      "CHEM",
+      "BET"
+    ],
+    "5": [
+      "PSUC",
+      "MAT",
+      "BET",
+      "CHEM LAB"
+    ]
+  }
+}

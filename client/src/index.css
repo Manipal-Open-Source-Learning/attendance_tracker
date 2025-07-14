@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901,1,2&display=swap");
 @import "tailwindcss";
 
@@ -17,6 +18,7 @@
     --font-outfit: 'Outfit', sans-serif;
     --font-inter: 'Inter', sans-serif;
     --font-satoshi: 'Satoshi', sans-serif;
+    --font-quicksand: 'Quicksand', sans-serif;
 }
 
 @layer base {
@@ -135,4 +137,16 @@
     100% {
         transform: translateX(100%) translateY(100%) rotate(45deg);
     }
+}
+
+.cancelButton{
+    @apply bg-[#1f1f1f] text-red-600 rounded-sm border-none text-[10px] p-1 m-2 font-jetbrains-mono cursor-pointer z-0
+}
+
+.substituteButton{
+    @apply bg-[#1f1f1f] text-white rounded-sm border-none text-[10px] p-1 mr-2 font-jetbrains-mono font-extralight
+}
+
+.dropdown:hover .dropdownItems{
+    display:block;
 }
