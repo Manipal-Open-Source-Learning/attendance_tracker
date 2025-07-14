@@ -1,8 +1,8 @@
-import Calendar from "../../components/ui/Calendar";
-import useAppSeo from "../../lib/hooks/useAppSeo";
-import MarkAttendanceTable from "../../components/ui/MarkAttendance";
-import useDateStore from "../../stores/useDateStore";
-import useVisibilityStore from "../../stores/useVisibilityStore";
+import Calendar from "@/components/ui/Calendar";
+import useAppSeo from "@/lib/hooks/useAppSeo";
+import MarkAttendanceTable from "@/components/ui/MarkAttendance";
+import useDateStore from "@/stores/useDateStore";
+import useVisibilityStore from "@/stores/useVisibilityStore";
 
 const Tracker = () => {
     useAppSeo({

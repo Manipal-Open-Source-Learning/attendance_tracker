@@ -1,8 +1,8 @@
 import data from "./test.json"
-import { MONTHS } from "../../lib/utils";
-import { DAYS } from "../../lib/utils";
-import calendar from '../../assets/icons/calendar.svg';
-import "../../index.css"
+import { MONTHS } from "@/lib/utils";
+import { DAYS } from "@/lib/utils";
+import calendar from '@/assets/icons/calendar.svg';
+import "@/index.css"
 
 //THIS IS A VERY ROUGH LAYOUT OF HOW THIS PAGE MIGHT LOOK, WORKING HAS TO BE CHANGED ONCE CONNECTED TO BACKEND 
 //CURRENT WORKING REPRESENTS WHAT WILL BE SHOWN WHEN CURRENT DAY IS LOADED UP (ATTENDANCE YET TO BE MARKED)

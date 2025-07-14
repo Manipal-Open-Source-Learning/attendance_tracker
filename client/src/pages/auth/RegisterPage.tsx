@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import useUIStore from "../../stores/useUIStore";
-import useAppSeo from "../../lib/hooks/useAppSeo";
-import { cn, RESPONSE_MESSAGE } from "../../lib/utils";
-import ShowToast from "../../components/ui/ShowToast";
+import useUIStore from "@/stores/useUIStore";
+import useAppSeo from "@/lib/hooks/useAppSeo";
+import { cn, RESPONSE_MESSAGE } from "@/lib/utils";
+import ShowToast from "@/components/ui/ShowToast";
 
 const LogIn = () => {
     useAppSeo({

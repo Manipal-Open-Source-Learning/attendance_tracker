@@ -49,9 +49,9 @@ type TeamMemberProps = {
     description: string;
 };
 
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
-const NO_OF_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-const DAYS = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] as const; 
+const NO_OF_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] as const;
+const DAYS = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
 
-export { NAVBAR_ITEMS, TEAM_MEMBERS, RESPONSE_MESSAGE, MONTHS, NO_OF_DAYS, DAYS, cn };
+export { NAVBAR_ITEMS, TEAM_MEMBERS, RESPONSE_MESSAGE, MONTHS, NO_OF_DAYS, DAYS, cn, };
 export type { TeamMemberProps };

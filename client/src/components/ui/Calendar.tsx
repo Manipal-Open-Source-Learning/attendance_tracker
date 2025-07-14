@@ -1,4 +1,4 @@
-import { DAYS, MONTHS, NO_OF_DAYS } from "../../lib/utils";
+import { DAYS, MONTHS, NO_OF_DAYS } from "@/lib/utils";
 const TODAY = new Date();
 
 function checkLeap(n: number){

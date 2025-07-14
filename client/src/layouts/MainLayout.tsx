@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/layouts/Navbar';
-import BottomBlur from '../components/ui/BottomBlur';
+import Navbar from '@/components/layouts/Navbar';
+import BottomBlur from '@/components/ui/BottomBlur';
 
 const MainLayout = () => {
   return (

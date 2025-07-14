@@ -1,5 +1,5 @@
-import githubLogo from '../../assets/logo/github.png';
-import type { TeamMemberProps } from '../../lib/utils';
+import githubLogo from '@/assets/logo/github.png';
+import type { TeamMemberProps } from '@/lib/utils';
 
 const TeamMember = ({ image, name, role, githubLink, description }: TeamMemberProps) => {
     const preventContextMenu = (e: React.MouseEvent) => {

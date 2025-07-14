@@ -1,4 +1,4 @@
-import useAppSeo from '../../lib/hooks/useAppSeo';
+import useAppSeo from '@/lib/hooks/useAppSeo';
 
 const DashboardHome = () => {
     useAppSeo({

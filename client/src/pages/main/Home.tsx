@@ -1,5 +1,5 @@
-import useAppSeo from '../../lib/hooks/useAppSeo';
-import Vortex from '../../components/ui/Vortex';
+import useAppSeo from '@/lib/hooks/useAppSeo';
+import Vortex from '@/components/ui/Vortex';
 
 const Home = () => {
   useAppSeo({
