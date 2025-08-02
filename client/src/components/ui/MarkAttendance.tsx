@@ -66,11 +66,10 @@ const handleSubmit = (targetDate:Date) => {
 }
 
 const MarkAttendanceTable=({activeDate, switcheroo}:MarkProps)=>{
-
     return(
         <>
             {(activeDate.getDay()!=0 && activeDate.getDay()!=6)?
-                <div className="text-center scale-150 backdrop-blur-xs border-accent border-4 rounded-lg p-5">
+                <div className="text-center backdrop-blur-xs border-accent border-4 rounded-lg p-5">
                     <div className="flex text-accent font-bold font-outfit mb-5 justify-between w-full">
                         <p className="w-6"></p>
                         <p>{`${activeDate.getDate()}-${MONTHS[activeDate.getMonth()]}-${activeDate.getFullYear()}, ${DAYS[activeDate.getDay()]}`}</p>

@@ -1,8 +1,8 @@
-import Calendar from "@/components/ui/Calendar";
+import { useState } from "react";
 import useAppSeo from "@/lib/hooks/useAppSeo";
+import Calendar from "@/components/ui/Calendar";
 import MarkAttendanceTable from "@/components/ui/MarkAttendance";
 import useDateStore from "@/stores/useDateStore";
-import useVisibilityStore from "@/stores/useVisibilityStore";
 
 const Tracker = () => {
     useAppSeo({
@@ -10,29 +10,38 @@ const Tracker = () => {
         description: 'Track your attendance with the Manipal OSF Attendance Tracker, a student-led initiative to simplify attendance management.',
     });
 
-    const {visibility1, visibility2, switcheroo} = useVisibilityStore();
-    const {activeDate, firstOfTheMonth, nextMonth, prevMonth, setDate} = useDateStore();
+    const [visibility, setVisibility] = useState<"calendar" | "attendance">("attendance");
+
+    const toggleVisibility = () => {
+        {/*TO BE MADE ASYNC ONCE CONNECTED TO DB ??*/ }
+
+        setVisibility((prev) => (prev === "calendar" ? "attendance" : "calendar"));
+    };
+
+    const { activeDate, firstOfTheMonth, nextMonth, prevMonth, setDate } = useDateStore();
 
     return (
         <main>
-            <div className="relative h-screen flex items-end pl-[5vw] pb-[10vh]">
-                <h1 className="m-0 text-[15vw] font-light bg-gradient-to-r from-[#FF6B4A] to-[#EE441C] bg-[length:250%_100%] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,107,74,0.5)] animate-[shimmer_5s_ease-in-out_infinite]">
-                    Tracker
-                </h1>
+            <div className="flex flex-wrap justify-center items-center py-40">
+                {visibility === 'attendance' && (
+                    <div className={`text-center`}>
+                        <MarkAttendanceTable activeDate={activeDate} switcheroo={toggleVisibility} />
+                    </div>
+                )}
+
+                {visibility === 'calendar' && (
+                    <div className='flex flex-col items-center gap-y-4'>
+                        <Calendar activeDate={activeDate} firstOfTheMonth={firstOfTheMonth} nextMonth={nextMonth} prevMonth={prevMonth} setDate={setDate} />
+                        <button
+                            type="button"
+                            onClick={toggleVisibility}
+                            className="w-full bg-green-500/80 cursor-pointer p-2 rounded-lg font-satoshi font-semibold"
+                        >
+                            Done
+                        </button> {/*TO BE MADE ASYNC ONCE CONNECTED TO DB*/}
+                    </div>
+                )}
             </div>
-            <div className="flex flex-wrap justify-center items-center gap-10 h-130">
-                <div className={`text-center ${visibility1}`}>
-                    <MarkAttendanceTable activeDate={activeDate} switcheroo={switcheroo}/>
-                </div>
-                <div className={`text-center ${visibility2}`}>
-                    <Calendar activeDate={activeDate} firstOfTheMonth={firstOfTheMonth} nextMonth={nextMonth} prevMonth={prevMonth} setDate={setDate}/>
-                    <button className="bg-[#00c12d] cursor-pointer p-2 rounded-lg font-satoshi font-semibold" onClick={switcheroo}>Done</button> {/*TO BE MADE ASYNC ONCE CONNECTED TO DB*/}
-                </div>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
         </main>
     );
 }

@@ -25,15 +25,30 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
     { image: ph, name: "PixelHalide", role: "Team Member", githubLink: "https://github.com/PixelHalide", description: '' },
     { image: bac, name: "bang-a-cat", role: "Team Member", githubLink: "https://github.com/bongacat", description: '' },
     { image: ad, name: "Orca", role: "Team Member", githubLink: "https://github.com/ObnoxiousOrca", description: '' }
-];
+] as const;
 
 const RESPONSE_MESSAGE = {
     otpSuccess: 'OTP sent successfully!'
-}
+} as const;
 
 const cn = (...inputs: ClassValue[]): string => {
     return twMerge(clsx(inputs));
 };
+
+function checkLeap(n: number) {
+    if (n % 4 == 0) {
+        if (n % 100 == 0 && n % 400 != 0) return 0;
+        else return 1;
+    }
+    return 0;
+}
+
+function isSameDate(date1: Date, date2: Date) {
+    if (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear()) {
+        return true;
+    }
+    return false;
+}
 
 type NavbarItem = {
     label: string;
@@ -49,9 +64,29 @@ type TeamMemberProps = {
     description: string;
 };
 
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] as const; 
-const NO_OF_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] as const;
-const DAYS = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
+type CalendarProps = {
+    firstOfTheMonth: Date,
+    activeDate: Date,
+    nextMonth: Function,
+    prevMonth: Function,
+    setDate: Function
+};
 
-export { NAVBAR_ITEMS, TEAM_MEMBERS, RESPONSE_MESSAGE, MONTHS, NO_OF_DAYS, DAYS, cn, };
-export type { TeamMemberProps };
+const MONTHS = [
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+] as const;
+
+const DAYS = [
+    "Sunday", "Monday", "Tuesday", "Wednesday",
+    "Thursday", "Friday", "Saturday"
+] as const;
+
+const NO_OF_DAYS = [
+    31, 28, 31, 30, 31, 30,
+    31, 31, 30, 31, 30, 31
+] as const;
+
+export { NAVBAR_ITEMS, TEAM_MEMBERS, RESPONSE_MESSAGE, MONTHS, NO_OF_DAYS, DAYS, cn, checkLeap, isSameDate };
+export type { TeamMemberProps, CalendarProps };
