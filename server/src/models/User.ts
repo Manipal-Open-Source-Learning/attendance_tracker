@@ -39,7 +39,7 @@ const AttendanceSchema = new Schema(
             type: [Date],
             default: [],
         },
-        medicalLeaveDates: { // remember to remove the absent date of the medical leave from absentDates
+        medicalLeaveDates: {
             type: [Date],
             default: [],
         },
@@ -80,11 +80,21 @@ AttendanceSchema.virtual('attendancePercentage').get(function () {
     return Math.ceil((totalPresents / effectiveTotal) * 100);
 });
 
+/**
+ * Marks a date as medical leave for the attendance record.
+ * If the date exists in absentDates, it will be removed from absentDates and added to medicalLeaveDates.
+ * This ensures that a date cannot be both absent and medical leave.
+ */
 AttendanceSchema.methods.markMedicalLeave = function (date: Date) {
     const dateStr = date.toISOString();
 
-    this.medicalLeaveDates = [...new Set([...this.medicalLeaveDates, date])];
-    this.absentDates = this.absentDates.filter((date: Date) => date.toISOString() !== dateStr);
+    // Remove the date from absentDates if present
+    this.absentDates = this.absentDates.filter((d: Date) => d.toISOString() !== dateStr);
+
+    // Add the date to medicalLeaveDates if not already present
+    if (!this.medicalLeaveDates.some((d: Date) => d.toISOString() === dateStr)) {
+        this.medicalLeaveDates.push(date);
+    }
 };
 
 

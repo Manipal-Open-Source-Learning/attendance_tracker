@@ -36,15 +36,15 @@ const cn = (...inputs: ClassValue[]): string => {
 };
 
 function checkLeap(n: number) {
-    if (n % 4 == 0) {
-        if (n % 100 == 0 && n % 400 != 0) return 0;
+    if (n % 4 === 0) {
+        if (n % 100 === 0 && n % 400 !== 0) return 0;
         else return 1;
     }
     return 0;
 }
 
 function isSameDate(date1: Date, date2: Date) {
-    if (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear()) {
+    if (date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear()) {
         return true;
     }
     return false;

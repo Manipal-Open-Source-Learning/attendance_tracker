@@ -4,7 +4,8 @@ export interface ISubject extends Document {
     code: string,
     name: string,
     semester: number,
-    credit: number
+    credit: number,
+    totalClasses: number
 }
 
 const SubjectSchema = new Schema({
